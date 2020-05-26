@@ -1,0 +1,12 @@
+<div class="rowery">
+    <p class="rowery-title">Rowery MTB:</p>
+    <div class="rowery-ilosc-modeli" [ngStyle]="{backgroundColor: products.length>20 ? 'rgb(68, 158, 68)' : 'rgb(202, 7, 7)'}">
+        W ofercie: {{products.length}} modeli
+        <div class="rowery-dodaj-rower-button button" (click)="dodajRower = true"><span>Dodaj model</span></div>
+    </div>
+    
+    <div class="rowery-lista">
+        <!-- <app-rower *ngFor="let rower of this.rowery | zawieraWNazwie: wyszukiwanaFraza" [rower]="rower" class="rowery-lista-rower" [ngStyle]="{borderColor: extremumColor(rower), borderWidth: extremumColor(rower) ? '3px' : null}" (rowerEmit)="usun($event)"> -->
+        <app-product *ngFor="let bike of this.products" [product]="bike" class="rowery-lista-rower" [ngStyle]="{borderColor: extremumColor(bike), borderWidth: extremumColor(bike) ? '3px' : null}"></app-product>
+    </div>
+</div>
