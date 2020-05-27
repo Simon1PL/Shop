@@ -1,1 +1,17 @@
-<p>shopping-cart works!</p>
+<div class="cart" *ngIf="products.length > 0">
+    <p class="cart-title">Twoje zakupy:</p>
+    <div class="cart-products-list">
+        <app-product *ngFor="let product of products" [product]="product" [notAllInfo]='true' class="cart-products-list-element" (click)="seeElement = product">
+        </app-product>
+    </div>
+    <p class="cart-sum">Suma: {{priceToString(calculateSum())}} zł</p>
+    <button class="cart-buy button" (click)="null"><span>Zamów</span></button>
+</div>
+
+<div class="empty-cart" *ngIf="products.length < 1">
+    <p class="empty-cart-title">Twój koszyk jest pusty</p>
+</div>
+
+<div class="fullinfo" *ngIf="seeElement" (click)="seeElement = null">
+    <app-product (click)="$event.stopPropagation()" [product]="seeElement" [notAllInfo]='false' class="fullinfo-product"></app-product>
+</div>

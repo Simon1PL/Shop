@@ -7,11 +7,11 @@ export interface Bike extends Product {
 }
 
 export enum bikeType {
-    Mountain = 'Górski',
-    Tour = 'Trekkingowy',
-    City = 'Miejski',
-    Road = 'Szosowy',
-    Ebike = 'Elektryczny'
+    Mountain = 'GÓRSKI',
+    Tour = 'TREKKINGOWY',
+    City = 'MIEJSKI',
+    Road = 'SZOSOWY',
+    Ebike = 'ELEKTRYCZNY'
 }
 
 export enum frameSize {

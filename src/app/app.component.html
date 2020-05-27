@@ -1,8 +1,8 @@
 <nav>
-  <a routerLink="/products" routerLinkActive="active">products</a>
-  <br/>
-  <a routerLink="/product" routerLinkActive="active">product</a>
-  <br/>
-  <a routerLink="/shopping-cart" routerLinkActive="active">shopping-cart</a>
+  <a routerLink="/bikes" routerLinkActive="active" (click)="setTypeOfProducts(productType.Bike)">Rowery</a>
+  <a routerLink="/scooters" routerLinkActive="active" (click)="setTypeOfProducts(productType.Scooter)">Hulajnogi</a>
+  <a routerLink="/products" routerLinkActive="active" (click)="setTypeOfProducts(null)">Wszystko</a>
+  <a routerLink="/new-product" routerLinkActive="active">Dodaj model</a>
+  <a routerLink="/shopping-cart" routerLinkActive="active">Koszyk</a>
 </nav>
 <router-outlet></router-outlet>

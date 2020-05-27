@@ -1,1 +1,58 @@
-<p>new-product works!</p>
+<div class="form" (click)="$event.stopPropagation()">
+    <div class="form-product">
+        <button class="form-product-bike button" (click)="this.newProduct.instanceOf = productType.Bike;" [ngClass]="{'choosen': productType.Bike === this.newProduct.instanceOf }">Rower</button>
+        <button class="form-product-scooter button" (click)="this.newProduct.instanceOf = productType.Scooter;" [ngClass]="{'choosen': productType.Scooter === this.newProduct.instanceOf }">Hulajnoga</button>
+    </div>
+    <input placeholder="model" [(ngModel)]="newProduct.model">
+    <input type="number" placeholder="cena" (input)="setPrice($event)">
+    <input type="number" placeholder="ilosc dostepnych egzemplarzy" (input)="setAmmount($event)">
+    <select name="bikeType" [ngStyle]="{display: this.newProduct.instanceOf === productType.Bike? 'block': 'none'}" (input)="addNewBikeType($event)">
+        <option value="" disabled selected>Typ roweru</option>
+        <option value="GÓRSKI">Górski</option>
+        <option value="TREKKINGOWY">Trekkingowy</option>
+        <option value="MIEJSKI">Miejski</option>
+        <option value="SZOSOWY">Szosowy</option>
+        <option value="ELEKTRYCZNY">Elektryczny</option>
+    </select>
+    <select name="frameSize" [ngStyle]="{display: this.newProduct.instanceOf === productType.Bike? 'block': 'none'}" (input)="addNewFrameSize($event)">
+        <option value="" disabled selected>Rozmiar ramy</option>
+        <option value="XS">XS</option>
+        <option value="S">S</option>
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+    </select>
+    <input type="number" min="0" max="40" placeholder="średnica koła" [(ngModel)]="newBike.wheelDiameter"  [ngStyle]="{display: this.newProduct.instanceOf === productType.Bike? 'block': 'none'}">
+    <input type="number" min="0" placeholder="waga" [(ngModel)]="newScooter.weightKg"  [ngStyle]="{display: this.newProduct.instanceOf === productType.Scooter? 'block': 'none'}">
+    <input type="number" min="0" placeholder="maksymalny zasięg" [(ngModel)]="newScooter.maxDistanceKm"  [ngStyle]="{display: this.newProduct.instanceOf === productType.Scooter? 'block': 'none'}">
+    <div class="form-grid">
+        <input placeholder="urlZdjecia" [(ngModel)]="newProduct.photoUrl" class="form-grid-photo">
+        <div class="form-grid-actual-specification">
+            Opis:
+            <div class="form-grid-actual-specification-line" *ngFor="let i of this.newProduct.additionalSpecification">
+                <div class="form-grid-actual-specification-line-left">{{i[0] | uppercase}}:</div>
+                <div class="form-grid-actual-specification-line-right">{{i[1]}}</div>
+            </div>
+        </div>
+        <input placeholder="część" list="examples" id="left" #left class="form-grid-left">
+        <datalist id="examples">
+            <option>Przerzutka przednia</option>
+            <option>Przerzutka tył</option>
+            <option>Rozmiar ramy</option>
+            <option>Kolor</option>
+            <option>Waga</option>
+            <option>Rok produkcji</option>
+            <option>Widelec</option>
+            <option>Opony</option>
+            <option>Hamulce</option>
+        </datalist>
+        <input placeholder="model/opis części" id="right" #right class="form-grid-right">
+        <div class="form-grid-add-specification button" (click)="addSpecification(left.value, right.value); left.value = ''; right.value = ''"><span>Dodaj do opisu</span></div>
+        <p style="color: white; width: 100%;">{{warningText2}}</p>
+    </div>
+    <div class="form-add button" (click)="addModel()"><span>Dodaj model</span></div>
+    <p style="color: white; width: 100%;">{{warningText}}</p>
+</div>
+
+<p class="infoAdded" id="infoAdded">Dodano</p>

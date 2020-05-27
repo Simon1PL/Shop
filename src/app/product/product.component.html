@@ -1,21 +1,37 @@
-<div class="nazwa">{{product.model | uppercase}}</div>
-<div class="informacje">
-    <img src={{product.photoUrl}} alt="Zdjęcie" class="informacje-zdjecie">
-    <div class="informacje-cena">{{cenaToString(product.priceInPln)}} zł</div>
+<div class="model-name" [ngStyle]="{fontSize: !notAllInfo ? '33px' : '23px'}">{{product.model | uppercase}}</div>
+<div class="info" (click)="notAllInfo ? photoDisplay = false : photoDisplay = true">
+    <img src={{product.photoUrl}} alt="Photo" class="info-photo" [ngStyle]="{'padding-bottom': product.instanceOf === productType.Scooter ?  '30px' : '0px'}">
+    <div *ngIf="!notAllInfo" class="info-price">{{priceToString(product.priceInPln)}} zł</div>
 </div>
-<div class="koszyk"  *ngIf="product.inStock>0; else niedostepne">
-    <div class="koszyk-dostepny" [ngClass]="{'kolor-czerwony': product.inStock<4}">
-        Dostępne egzemplarze: {{product.inStock}}
+<p *ngIf="notAllInfo" class="price">Cena: {{priceToString(product.priceInPln)}} zł</p>
+<ng-template #unavailable>
+    <div class="cart-unavailable">
+        Produkt chwilowo niedostępny
+        <div class="remove" title="usuń model">
+            <svg class="remove-icon" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" (click)="remove(product)">
+                <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
+            </svg>
+        </div>
     </div>
-    <div class="koszyk-usun" (click)="dodaj($event, -1)" [ngClass]="{'wylaczony-przycisk': !iloscWKoszyku, 'disabled': !iloscWKoszyku}">
+</ng-template>
+<div class="cart"  *ngIf="product.inStock>0; else unavailable">
+    <div class="cart-available" [ngClass]="{'red': product.inStock<4}">
+        Dostępne egzemplarze: {{product.inStock}}
+        <div *ngIf="!notAllInfo" class="remove" title="usuń model"  (click)="remove(product)">
+            <svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
+            </svg>
+        </div>
+    </div>
+    <div class="cart-reduce" (click)="addToCart($event, -1)" [ngClass]="{'disabled': !inCart}">
         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
             width="60" height="60"
             viewBox="0 0 172 172"
             style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z"></path><g fill="#ffffff"><path d="M85.91042,14.25495c-3.16203,0.04943 -5.68705,2.6496 -5.64375,5.81172v2.86667h-31.53333c-1.53406,-0.02082 -3.01249,0.574 -4.10468,1.65146c-1.09219,1.07746 -1.70703,2.54767 -1.70704,4.08187h-8.52161c-2.06765,-0.02924 -3.99087,1.05709 -5.03322,2.843c-1.04236,1.78592 -1.04236,3.99474 0,5.78066c1.04236,1.78592 2.96558,2.87225 5.03322,2.843h103.2c2.06765,0.02924 3.99087,-1.05709 5.03322,-2.843c1.04236,-1.78592 1.04236,-3.99474 0,-5.78066c-1.04236,-1.78592 -2.96558,-2.87225 -5.03322,-2.843h-8.52161c-0.00001,-1.53421 -0.61486,-3.00442 -1.70704,-4.08187c-1.09219,-1.07746 -2.57061,-1.67228 -4.10468,-1.65146h-31.53333v-2.86667c0.02122,-1.54972 -0.58581,-3.04203 -1.68279,-4.1369c-1.09698,-1.09487 -2.59045,-1.69903 -4.14013,-1.67482zM34.4,51.6l10.27969,87.34375c0.67653,5.77347 5.56348,10.12292 11.37708,10.12292h59.88646c5.8136,0 10.69482,-4.34945 11.37708,-10.12292l10.27969,-87.34375z"></path></g></g>
         </svg>
     </div>
-    <div class="koszyk-iloscWKoszyku">W koszyku: {{this.iloscWKoszyku}}</div>
-    <div class="koszyk-dodaj" (click)="dodaj($event, 1)" [ngClass]="{'wylaczony-przycisk': product.inStock===iloscWKoszyku}">
+    <div class="cart-incart">W koszyku: {{this.inCart}}</div>
+    <div class="cart-add" (click)="addToCart($event, 1)" [ngClass]="{'disabled': product.inStock===inCart}">
         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
             width="48" height="48"
             viewBox="0 0 172 172"
@@ -23,14 +39,10 @@
         </svg>
     </div>
 </div>
-<ng-template #niedostepne>
-    <div class="koszyk-niedostepny">
-        Produkt chwilowo niedostępny
-    </div>
-</ng-template>
-<div class="specyfikacja">
-    <div class="specyfikacja-linia" *ngFor="let i of product.additionalSpecification">
-        <div class="specyfikacja-linia-czesc">{{i[0] | uppercase}}:</div>
-        <div>{{i[1]}}</div>
+<div class="specification" *ngIf="!notAllInfo">
+    <div class="specification-line" *ngFor="let i of productSpecification">
+        <div class="specification-line-left">{{i[0] | uppercase}}:</div>
+        <div class="specification-line-right">{{i[1]}}</div>
     </div>
 </div>
+<app-photo (click)="photoDisplay = false" [ngStyle]="{display: photoDisplay ? 'block' : 'none'}" [url]="product.photoUrl"></app-photo>

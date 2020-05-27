@@ -1,12 +1,13 @@
-<div class="rowery">
-    <p class="rowery-title">Rowery MTB:</p>
-    <div class="rowery-ilosc-modeli" [ngStyle]="{backgroundColor: products.length>20 ? 'rgb(68, 158, 68)' : 'rgb(202, 7, 7)'}">
-        W ofercie: {{products.length}} modeli
-        <div class="rowery-dodaj-rower-button button" (click)="dodajRower = true"><span>Dodaj model</span></div>
+<div class="products">
+    <div class="products-ammount" [ngStyle]="{backgroundColor: products.length>20 ? 'rgb(68, 158, 68)' : 'rgb(202, 7, 7)'}">
+        <p class="products-ammount-text">W sumie {{visibleProducts.length}} rekordów</p>
+        <div class="products-ammount-add button" (click)="changeFormVisible()"><span>Dodaj model</span></div>
     </div>
-    
-    <div class="rowery-lista">
-        <!-- <app-rower *ngFor="let rower of this.rowery | zawieraWNazwie: wyszukiwanaFraza" [rower]="rower" class="rowery-lista-rower" [ngStyle]="{borderColor: extremumColor(rower), borderWidth: extremumColor(rower) ? '3px' : null}" (rowerEmit)="usun($event)"> -->
-        <app-product *ngFor="let bike of this.products" [product]="bike" class="rowery-lista-rower" [ngStyle]="{borderColor: extremumColor(bike), borderWidth: extremumColor(bike) ? '3px' : null}"></app-product>
+    <input class="products-search" placeholder="Search..." (input)="search($event)"  spellcheck="false">
+    <div class="products-list">
+        <app-product *ngFor="let product of this.visibleProducts" [product]="product" class="products-list-element" [ngStyle]="{borderColor: extremumColor(product), borderWidth: extremumColor(product) ? '3px' : null}" (removeEmiter)="remove($event)">
+        </app-product>
     </div>
 </div>
+
+<app-new-product class="form" [ngStyle]="{visibility: getFormVisible() ? 'visible' : 'hidden'}" (click)="changeFormVisible()"></app-new-product>

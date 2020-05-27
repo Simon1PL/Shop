@@ -1,9 +1,7 @@
 import { Bike, bikeType, frameSize } from '../models/bike';
-import { Scooter } from '../models/scooter';
 import { productType } from '../models/product';
 
 export const bikes: Bike[] = [];
-export const scooters: Scooter[] = [];
 
 const photo = 'https://skoda-wlc.s3.amazonaws.com/5/2017/10/big_3dc06ceb-e8d5-4315-b53f-ec20c6c4e607.jpg';
 
@@ -151,14 +149,14 @@ for (const model in models) {
         priceInPln: prices[model],
         additionalSpecification: specifications[model],
         photoUrl: photos[model],
-        inStock: 3,
+        inStock: 1000,
         type: bikeType.Mountain,
         frameSize: [frameSize.S, frameSize.M, frameSize.L, frameSize.XL, frameSize.XXL],
         wheelDiameter: 29, instanceOf: productType.Bike });
 }
 for (let index = 0; index < 10; index++) {
     bikes.push({ model: `B\'TWIN ${index + 1}`,
-        priceInPln: 1700,
+        priceInPln: 1300 + (index % 10) * 100,
         additionalSpecification: makeSpecification(index),
         photoUrl: photo,
         inStock: Math.max(index - 2, 0),
