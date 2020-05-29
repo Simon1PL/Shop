@@ -23,7 +23,7 @@
             </svg>
         </div>
     </div>
-    <div class="cart-reduce" (click)="addToCart($event, -1)" [ngClass]="{'disabled': !inCart}">
+    <div class="cart-reduce" (click)="addToCart($event, -1); $event.stopPropagation()" [ngClass]="{'disabled': !inCart}">
         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
             width="60" height="60"
             viewBox="0 0 172 172"
@@ -31,7 +31,7 @@
         </svg>
     </div>
     <div class="cart-incart">W koszyku: {{this.inCart}}</div>
-    <div class="cart-add" (click)="addToCart($event, 1)" [ngClass]="{'disabled': product.inStock===inCart}">
+    <div class="cart-add" (click)="addToCart($event, 1); $event.stopPropagation()" [ngClass]="{'disabled': product.inStock===inCart}">
         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
             width="48" height="48"
             viewBox="0 0 172 172"
