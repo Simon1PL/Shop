@@ -16,11 +16,7 @@
     &-photo {
         border-radius: 50%;
         width: 80%;
-        max-height: calc(45vw / 3);
-
-        @media(max-width: 1500px) {
-            max-height: calc(45vw/2);
-        }
+        max-height: calc(45vw / 2);
 
         @media(max-width: 1000px) {
             max-height: calc(45vw);
@@ -56,10 +52,10 @@
 
     &-reduce, &-add {
         cursor: pointer;
-        color: white;
+        color: white !important;
         background-color: black;
-        width: 25px;
-        height: 25px;
+        width: 35px;
+        height: 35px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -69,7 +65,7 @@
     }
 
     &-incart {
-        margin-top: 9px;
+        margin-top: 5px;
     }
 }
 
@@ -109,8 +105,6 @@
 
 .remove {
     display: inline-block;
-    position: relative;
-    bottom: -8px;
     width: 30px;
     height: 30px;
     color: black;

@@ -11,6 +11,8 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { SearchPipe } from './search.pipe';
 import { ProductsService } from './services/products-service';
 import { PhotoComponent } from './photo/photo.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { PhotoComponent } from './photo/photo.component';
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [ProductsService],
   bootstrap: [AppComponent]
