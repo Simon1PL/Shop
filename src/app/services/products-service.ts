@@ -55,11 +55,11 @@ export class ProductsService {
     //   this.products.splice(index, 1);
     // }
     this.products.splice(this.products.indexOf(product), 1);
-    if (product.instanceOf === productType.Bike) {
-      this.bikes.splice(this.bikes.indexOf(product as Bike));
+    if (product.instanceOf === 0) {
+      this.bikes.splice(this.bikes.indexOf(product as Bike), 1);
     }
-    else if (product.instanceOf === productType.Scooter) {
-      this.scooters.splice(this.scooters.indexOf(product as Scooter));
+    else if (product.instanceOf === 1) {
+      this.scooters.splice(this.scooters.indexOf(product as Scooter), 1);
     }
   }
 
