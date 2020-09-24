@@ -1,10 +1,14 @@
-nav {
+.nav {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     text-align: center;
     flex-wrap: wrap;
     margin-bottom: 50px;
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 1;
 
     a {
         font-family: 'Alfa Slab One', cursive;
@@ -35,4 +39,16 @@ nav {
 
 .active {
     color: black !important;
+}
+
+.login_nav {
+    display: flex;
+    justify-content: flex-end;
+    background-color: rgb(73, 73, 73);
+    padding-right: 20px;
+    
+    a, span {
+        margin: 10px;
+        color: white;
+    }
 }

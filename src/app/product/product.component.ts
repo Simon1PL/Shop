@@ -9,7 +9,6 @@ import { CartService } from '../services/cart.service';
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss'],
-  providers: [ProductsService]
 })
 
 export class ProductComponent implements OnInit {

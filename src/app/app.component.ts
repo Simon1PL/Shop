@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ProductsService } from './services/products-service';
 import { productType } from './models/product';
 import { Router } from '@angular/router';
+import { LoginService } from './services/login.service';
 
 @Component({
   selector: 'app-root',
@@ -13,11 +14,13 @@ export class AppComponent {
   title = 'sklep';
   productType = productType;
 
+  constructor(private productService: ProductsService, router: Router, private loginService: LoginService) {
+    // router.navigate(['/products']);
+  }
+
   setTypeOfProducts(type: productType) {
     this.productService.specifyProducts = type;
   }
 
-  constructor(private productService: ProductsService, router: Router) {
-    router.navigate(['/products']);
-  }
+  logout(){}
 }

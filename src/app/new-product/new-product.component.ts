@@ -12,11 +12,11 @@ import { ProductsService } from '../services/products-service';
 export class NewProductComponent implements OnInit {
   warningText = '';
   warningText2 = '';
-  newProduct: Product =  { model: '', priceInPln: 0, additionalSpecification: [], photoUrl: 'http://www.stratywojenne.muzeum.bydgoszcz.pl/wp-content/themes/SWMuzeo/img/noimg.png', inStock: 0, instanceOf: productType.Bike };
+  newProduct: Product =  { id: '', model: '', priceInPln: 0, additionalSpecification: [], photoUrl: 'http://www.stratywojenne.muzeum.bydgoszcz.pl/wp-content/themes/SWMuzeo/img/noimg.png', inStock: 0, instanceOf: productType.Bike };
   // tslint:disable-next-line: max-line-length
-  newScooter: Scooter = { model: null, priceInPln: null, additionalSpecification: null, photoUrl: null, inStock: null, instanceOf: null, maxDistanceKm: null, weightKg: null };
+  newScooter: Scooter = { id: '', model: null, priceInPln: null, additionalSpecification: [], photoUrl: null, inStock: null, instanceOf: null, maxDistanceKm: null, weightKg: null };
   // tslint:disable-next-line: max-line-length
-  newBike: Bike = { model: null, priceInPln: null, additionalSpecification: null, photoUrl: null, inStock: null, instanceOf: null, type: null, frameSize: [], wheelDiameter: null};
+  newBike: Bike = { id: '', model: null, priceInPln: null, additionalSpecification: [], photoUrl: null, inStock: null, instanceOf: null, type: null, frameSize: [], wheelDiameter: null};
   productType = productType;
 
   addModel() {
@@ -39,7 +39,7 @@ export class NewProductComponent implements OnInit {
         this.warningText === '' ? this.warningText += 'Uzupełnij: typ roweru' : this.warningText += ', typ roweru';
         return;
       }
-      this.newBike = { model: this.newProduct.model,
+      this.newBike = { id: '', model: this.newProduct.model,
         priceInPln: this.newProduct.priceInPln, instanceOf: this.newProduct.instanceOf,
         additionalSpecification: this.newProduct.additionalSpecification,
         photoUrl: this.newProduct.photoUrl, inStock: this.newProduct.inStock,
@@ -56,7 +56,7 @@ export class NewProductComponent implements OnInit {
         this.warningText === '' ? this.warningText += 'Uzupełnij: wagę' : this.warningText += ', wagę';
         return;
       }
-      this.newScooter = { model: this.newProduct.model,
+      this.newScooter = { id: '', model: this.newProduct.model,
         priceInPln: this.newProduct.priceInPln, instanceOf: this.newProduct.instanceOf,
         additionalSpecification: this.newProduct.additionalSpecification,
         photoUrl: this.newProduct.photoUrl, inStock: this.newProduct.inStock,

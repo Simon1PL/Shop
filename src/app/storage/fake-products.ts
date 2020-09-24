@@ -145,7 +145,7 @@ const specifications: [string, string][][] = [
 
 // tslint:disable-next-line: forin
 for (const model in models) {
-    bikes.push({ model: models[model],
+    bikes.push({ id: '', model: models[model],
         priceInPln: prices[model],
         additionalSpecification: specifications[model],
         photoUrl: photos[model],
@@ -155,7 +155,7 @@ for (const model in models) {
         wheelDiameter: 29, instanceOf: productType.Bike });
 }
 for (let index = 0; index < 10; index++) {
-    bikes.push({ model: `B\'TWIN ${index + 1}`,
+    bikes.push({ id: '', model: `B\'TWIN ${index + 1}`,
         priceInPln: 1300 + (index % 10) * 100,
         additionalSpecification: makeSpecification(index),
         photoUrl: photo,

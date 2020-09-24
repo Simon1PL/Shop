@@ -1,4 +1,10 @@
-<nav>
+<nav class="login_nav">
+  <a routerLink="/register" routerLinkActive="active">Register</a>
+  <a routerLink="/login" routerLinkActive="active">Login</a>
+  <a routerLink="/login" routerLinkActive="active" (click)="logout()">Logout</a>
+  <span>Użytkownik: Rola</span>
+</nav>
+<nav class="nav">
   <a routerLink="/bikes" routerLinkActive="active" (click)="setTypeOfProducts(productType.Bike)">Rowery</a>
   <a routerLink="/scooters" routerLinkActive="active" (click)="setTypeOfProducts(productType.Scooter)">Hulajnogi</a>
   <a routerLink="/products" routerLinkActive="active" (click)="setTypeOfProducts(null)">Wszystko</a>

@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "shop-2f17b": {
+      "hosting": {
+        "sklep": [
+          "shop-2f17b"
+        ]
+      }
+    }
+  }
+}

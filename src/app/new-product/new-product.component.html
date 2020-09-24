@@ -3,10 +3,10 @@
         <button class="form-product-bike button" (click)="this.newProduct.instanceOf = productType.Bike;" [ngClass]="{'choosen': productType.Bike === this.newProduct.instanceOf }">Rower</button>
         <button class="form-product-scooter button" (click)="this.newProduct.instanceOf = productType.Scooter;" [ngClass]="{'choosen': productType.Scooter === this.newProduct.instanceOf }">Hulajnoga</button>
     </div>
-    <input placeholder="model" [(ngModel)]="newProduct.model">
+    <input placeholder="model" [(ngModel)]="newProduct.model" [ngStyle]="{backgroundColor: !newProduct.model ? 'rgb(215, 175, 175)' : 'white'}">
     <input type="number" placeholder="cena" (input)="setPrice($event)">
     <input type="number" placeholder="ilosc dostepnych egzemplarzy" (input)="setAmmount($event)">
-    <select name="bikeType" [ngStyle]="{display: this.newProduct.instanceOf === productType.Bike? 'block': 'none'}" (input)="addNewBikeType($event)">
+    <select name="bikeType" [ngStyle]="{display: this.newProduct.instanceOf === productType.Bike? 'block': 'none', backgroundColor: !newBike.type ? 'rgb(215, 175, 175)' : 'white'}" (input)="addNewBikeType($event)">
         <option value="" disabled selected>Typ roweru</option>
         <option value="GÓRSKI">Górski</option>
         <option value="TREKKINGOWY">Trekkingowy</option>
@@ -14,8 +14,8 @@
         <option value="SZOSOWY">Szosowy</option>
         <option value="ELEKTRYCZNY">Elektryczny</option>
     </select>
-    <select name="frameSize" [ngStyle]="{display: this.newProduct.instanceOf === productType.Bike? 'block': 'none'}" (input)="addNewFrameSize($event)">
-        <option value="" disabled selected>Rozmiar ramy</option>
+    <select name="frameSize" [ngStyle]="{display: this.newProduct.instanceOf === productType.Bike? 'block': 'none', backgroundColor: newBike.frameSize.length == 0 ? 'rgb(215, 175, 175)' : 'white'}" (input)="addNewFrameSize($event)">
+        <option value="" disabled selected >Rozmiar ramy</option>
         <option value="XS">XS</option>
         <option value="S">S</option>
         <option value="M">M</option>
@@ -23,9 +23,9 @@
         <option value="XL">XL</option>
         <option value="XXL">XXL</option>
     </select>
-    <input type="number" min="0" max="40" placeholder="średnica koła" [(ngModel)]="newBike.wheelDiameter"  [ngStyle]="{display: this.newProduct.instanceOf === productType.Bike? 'block': 'none'}">
-    <input type="number" min="0" placeholder="waga" [(ngModel)]="newScooter.weightKg"  [ngStyle]="{display: this.newProduct.instanceOf === productType.Scooter? 'block': 'none'}">
-    <input type="number" min="0" placeholder="maksymalny zasięg" [(ngModel)]="newScooter.maxDistanceKm"  [ngStyle]="{display: this.newProduct.instanceOf === productType.Scooter? 'block': 'none'}">
+    <input type="number" min="0" max="40" placeholder="średnica koła" [(ngModel)]="newBike.wheelDiameter"  [ngStyle]="{display: this.newProduct.instanceOf === productType.Bike? 'block': 'none', backgroundColor: !newBike.wheelDiameter ? 'rgb(215, 175, 175)' : 'white'}">
+    <input type="number" min="0" placeholder="waga" [(ngModel)]="newScooter.weightKg"  [ngStyle]="{display: this.newProduct.instanceOf === productType.Scooter? 'block': 'none', backgroundColor: !newScooter.weightKg ? 'rgb(215, 175, 175)' : 'white'}">
+    <input type="number" min="0" placeholder="maksymalny zasięg" [(ngModel)]="newScooter.maxDistanceKm"  [ngStyle]="{display: this.newProduct.instanceOf === productType.Scooter? 'block': 'none', backgroundColor: !newScooter.maxDistanceKm ? 'rgb(215, 175, 175)' : 'white'}">
     <div class="form-grid">
         <input placeholder="urlZdjecia" [(ngModel)]="newProduct.photoUrl" class="form-grid-photo">
         <div class="form-grid-actual-specification">

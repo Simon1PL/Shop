@@ -61,7 +61,7 @@ const specifications: [string, string][][] = [
 
 // tslint:disable-next-line: forin
 for (const model in models) {
-    scooters.push({ model: models[model],
+    scooters.push({ id: '', model: models[model],
         priceInPln: prices[model],
         additionalSpecification: specifications[model],
         photoUrl: photos[model],

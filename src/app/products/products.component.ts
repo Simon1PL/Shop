@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Product, productType } from '../models/product';
 import { ProductsService } from '../services/products-service';
+import { FirebaseService } from '../services/firebase.service';
 
 @Component({
   selector: 'app-products',
@@ -9,8 +10,16 @@ import { ProductsService } from '../services/products-service';
 })
 
 export class ProductsComponent implements OnInit {
-  products: Product[];
-  visibleProducts: Product[];
+  products: Product[] = [];
+  visibleProducts: Product[] = [];
+
+  constructor(private productsService: ProductsService, private firebaseService: FirebaseService) { }
+
+  async ngOnInit() {
+    await this.productsService.hasLoaded;
+    this.getProducts();
+    this.visibleProducts = this.products;
+  }
 
   search(event) {
     const searchingValue = event.target.value;
@@ -19,7 +28,6 @@ export class ProductsComponent implements OnInit {
     if (searchingValue !== '') {
       resultProducts = this.products.filter(product => product.model.toLowerCase().includes(event.target.value.toLowerCase()));
       this.products.forEach(element => {
-        console.log(element.additionalSpecification.toString());
         if (resultProducts.indexOf(element) < 0 && element.additionalSpecification.toString().toLowerCase().includes(searchingValue)) {
           resultProducts.push(element);
         }
@@ -53,13 +61,6 @@ export class ProductsComponent implements OnInit {
 
   getFormVisible() {
     return this.productsService.getFormVisible();
-  }
-
-  constructor(private productsService: ProductsService) { }
-
-  ngOnInit(): void {
-    this.getProducts();
-    this.visibleProducts = this.products;
   }
 
 }

@@ -1,4 +1,5 @@
 export interface Product {
+    id: string;
     model: string;
     inStock: number;
     priceInPln: number;
