@@ -18,11 +18,14 @@ export class AppComponent {
   user: User;
   displayUser: string;
 
-  constructor(private productService: ProductsService, private firebaseService: FirebaseService, private loginService: LoginService) {
+  constructor(private productService: ProductsService, private firebaseService: FirebaseService, private loginService: LoginService, private router: Router) {
     this.loginService.currentUser().subscribe(data => {
       if (data == null) {
         this.user = null;
         this.displayUser = null;
+        if(this.router.url !== '/login' && this.router.url !== '/register') {
+          this.router.navigate(['/login']);
+        }
       }
       else {
         this.user = (data as User);
