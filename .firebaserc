@@ -7,5 +7,8 @@
         ]
       }
     }
+  },
+  "projects": {
+    "aliasShop": "shop-2f17b"
   }
 }

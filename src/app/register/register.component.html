@@ -1,1 +1,10 @@
-<p>register works!</p>
+<div class="register">
+    <h2>Sign up</h2>
+    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+    <input type="text" [(ngModel)]="email" class="form-control" placeholder="Email">
+
+    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+    <input type="password" [(ngModel)]="password" class="form-control" placeholder="Password">
+
+    <button type="button" (click)="register()" class="float"><h2>Register</h2></button>
+  </div>

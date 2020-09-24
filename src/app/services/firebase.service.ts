@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Product } from '../models/product';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +36,16 @@ export class FirebaseService {
 
   deleteProduct(prodID: string){
     this.db.object('products/' + prodID).remove();
+  }
+
+  addUser(user: User){
+    this.db.list('users').push(user);
+  }
+
+  getUser(email: string){
+    return new Promise((resolve, reject) => {
+      this.db.list('users').valueChanges().subscribe(value => resolve((value as User[]).find(u => u.email === email)));
+    });
   }
 
 }

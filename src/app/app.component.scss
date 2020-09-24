@@ -5,11 +5,14 @@
     text-align: center;
     flex-wrap: wrap;
     margin-bottom: 50px;
-    position: sticky;
-    top: 0;
+    
     background-color: white;
     z-index: 1;
 
+    .active {
+        color: black !important;
+    }
+    
     a {
         font-family: 'Alfa Slab One', cursive;
         font-size: 40px;
@@ -35,10 +38,6 @@
             color: rgb(54, 54, 54);
         }
     }
-}
-
-.active {
-    color: black !important;
 }
 
 .login_nav {
