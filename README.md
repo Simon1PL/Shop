@@ -1,7 +1,7 @@
 # Sklep
-WebApp using angular and firebase.
+WebApp using angular and firebase.  
 Live: https://shop-2f17b.web.app/  
-progressive web app(download it on mobile and desktop):
+progressive web app(download it on mobile or desktop):  
 1.
 ![screen](pwa1.JPG)
 2.
