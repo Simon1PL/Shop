@@ -2,14 +2,14 @@
 ### WebApp using angular and firebase.  
 ### Live: https://shop-2f17b.web.app/  
 ### progressive web app(download it on mobile or desktop):
-### 1.
+#### 1.
 ![screen](pwa1.JPG)
-### 2.
+#### 2.
 ![screen](pwa2.JPG)
 
-### ToDo: products in shopping-cart store in db  
+#### ToDo: products in shopping-cart store in db  
 
-### This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.5.
+#### This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.5.
 
 ### Screens:
 ![screen](src/assets/screen1.PNG)
